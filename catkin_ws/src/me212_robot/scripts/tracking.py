@@ -1,6 +1,7 @@
 #!/usr/bin/python
 from Adafruit_MotorHAT import Adafruit_MotorHAT
 import rospy
+import numpy as np
 from std_msgs.msg import Float64MultiArray
 from math import pi, radians
 class Tracking:
@@ -40,23 +41,23 @@ class Tracking:
 		if(self.state == 1):
 			self.leftMotor.run(1)
 			self.rightMotor.run(1)
-			self.leftMotor.setSpeed(160)
-			self.rightMotor.setSpeed(160)
+			self.leftMotor.setSpeed(100)
+			self.rightMotor.setSpeed(100)
 			if(x > 1):
 				self.state = 2;
 		elif(self.state == 2):
 			self.leftMotor.run(1)
 			self.rightMotor.run(1)
-			self.leftMotor.setSpeed(80)
-			self.rightMotor.setSpeed(160)
-			if(theta >= 180):
+			self.leftMotor.setSpeed(50)
+			self.rightMotor.setSpeed(100)
+			if(theta*180/np.pi >= 180):
 				self.state = 3;
 		else:
 			self.leftMotor.run(1)
 			self.rightMotor.run(1)
-			self.leftMotor.setSpeed(160)
-			self.rightMotor.setSpeed(160)	
-			if(x < 0.05)
+			self.leftMotor.setSpeed(100)
+			self.rightMotor.setSpeed(100)	
+			if(x < 0.05):
 				self.state = 4;
 				self.leftMotor.run(4)
 				self.rightMotor.run(4)
