@@ -36,6 +36,32 @@ class Tracking:
 
 		#if pi - theta > self.angular_err:    ### trun right/left
 
+		
+		if(self.state == 1):
+			self.leftMotor.run(1)
+			self.rightMotor.run(1)
+			self.leftMotor.setSpeed(160)
+			self.rightMotor.setSpeed(160)
+			if(x > 1):
+				self.state = 2;
+		elif(self.state == 2):
+			self.leftMotor.run(1)
+			self.rightMotor.run(1)
+			self.leftMotor.setSpeed(80)
+			self.rightMotor.setSpeed(160)
+			if(theta >= 180):
+				self.state = 3;
+		else:
+			self.leftMotor.run(1)
+			self.rightMotor.run(1)
+			self.leftMotor.setSpeed(160)
+			self.rightMotor.setSpeed(160)	
+			if(x < 0.05)
+				self.state = 4;
+				self.leftMotor.run(4)
+				self.rightMotor.run(4)
+
+
 
 	def custom_shutdown(self):
 		self.leftMotor.run(4)
