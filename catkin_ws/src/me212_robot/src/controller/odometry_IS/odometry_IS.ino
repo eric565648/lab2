@@ -50,7 +50,7 @@ void loop() {
   // x = ??? 
   // y = ???
   d_theta = (dis_R - dis_L)/(2*WIDTH);
-  theta = theta + d_theta
+  theta = theta + d_theta;
 
   x = x + 0.5 * (cos(theta)*dis_R + cos(theta)*dis_L);
   y = y + 0.5 * (sin(theta)*dis_R + sin(theta)*dis_L);
